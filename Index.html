@@ -1,0 +1,1172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Career Dashboard is an application for organizing internship applications, interviews, and career progress.">
+
+  <meta name="theme-color" content="#0b1220">
+
+  <title>Career Dashboard | Internship Tracker</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sidebar-header">
+        <div class="brand-icon">C</div>
+
+        <div class="brand-text">
+          <h1>Career Dashboard</h1>
+          <span>Internship Tracker 2.0</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav"
+           aria-label="Dashboard navigation">
+
+        <p class="nav-label">WORKSPACE</p>
+
+        <button class="nav-item active"
+                data-page="overview"
+                type="button">
+          <span class="nav-icon">▦</span>
+          <span>Overview</span>
+        </button>
+
+        <button class="nav-item"
+                data-page="applications"
+                type="button">
+          <span class="nav-icon">▤</span>
+          <span>Applications</span>
+        </button>
+
+        <button class="nav-item"
+                data-page="board"
+                type="button">
+          <span class="nav-icon">▥</span>
+          <span>Application Board</span>
+        </button>
+
+        <button class="nav-item"
+                data-page="interviews"
+                type="button">
+          <span class="nav-icon">▣</span>
+          <span>Interviews</span>
+        </button>
+
+        <button class="nav-item"
+                data-page="analytics"
+                type="button">
+          <span class="nav-icon">◫</span>
+          <span>Analytics</span>
+        </button>
+
+        <button class="nav-item"
+                data-page="resumes"
+                type="button">
+          <span class="nav-icon">▧</span>
+          <span>Resumes</span>
+        </button>
+
+      </nav>
+
+      <div class="sidebar-footer">
+
+        <div class="sidebar-profile">
+          <div class="profile-avatar">YM</div>
+
+          <div>
+            <strong>Yusuf Mohamoud</strong>
+            <span>Personal Workspace</span>
+          </div>
+        </div>
+
+        <p class="sidebar-version">
+          Career Dashboard v2.0
+        </p>
+
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-wrapper">
+
+      <!-- TOP BAR -->
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button id="mobile-menu-btn"
+                  class="icon-button mobile-menu-btn"
+                  type="button"
+                  aria-label="Toggle navigation"
+                  aria-expanded="false"
+                  aria-controls="sidebar">
+            ☰
+          </button>
+
+          <div>
+            <span class="topbar-label">
+              MY WORKSPACE
+            </span>
+
+            <h2 id="current-page-title">
+              Overview
+            </h2>
+          </div>
+
+        </div>
+
+        <div class="topbar-actions">
+
+          <span class="storage-indicator">
+            ● Saved Locally
+          </span>
+
+          <button class="btn btn-primary"
+                  id="top-add-application"
+                  type="button">
+            + New Application
+          </button>
+
+        </div>
+
+      </header>
+
+      <main class="main-content">
+
+        <!-- OVERVIEW PAGE -->
+
+        <section class="page active"
+                 id="page-overview">
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">YOUR WORKSPACE</p>
+
+              <h2>Dashboard Overview</h2>
+
+              <p>
+                Keep up with your applications,
+                interviews, and overall progress.
+              </p>
+            </div>
+
+            <button class="btn btn-secondary"
+                    id="overview-add-btn"
+                    type="button">
+              + Add Application
+            </button>
+
+          </div>
+
+          <!-- STATS -->
+
+          <div class="stats-grid">
+
+            <article class="stat-card">
+
+              <div class="stat-top">
+                <span>Total Applications</span>
+                <span class="stat-icon">▤</span>
+              </div>
+
+              <strong id="stat-total">0</strong>
+
+              <p>Applications in your tracker</p>
+
+            </article>
+
+            <article class="stat-card">
+
+              <div class="stat-top">
+                <span>Applied</span>
+                <span class="stat-icon">↗</span>
+              </div>
+
+              <strong id="stat-applied">0</strong>
+
+              <p>Applications submitted</p>
+
+            </article>
+
+            <article class="stat-card">
+
+              <div class="stat-top">
+                <span>Interviews</span>
+                <span class="stat-icon">▣</span>
+              </div>
+
+              <strong id="stat-interviewing">0</strong>
+
+              <p>In the interview stage</p>
+
+            </article>
+
+            <article class="stat-card">
+
+              <div class="stat-top">
+                <span>Offers</span>
+                <span class="stat-icon">★</span>
+              </div>
+
+              <strong id="stat-offers">0</strong>
+
+              <p>Offers received</p>
+
+            </article>
+
+          </div>
+
+          <!-- OVERVIEW PANELS -->
+
+          <div class="overview-grid">
+
+            <section class="panel">
+
+              <div class="panel-header">
+
+                <div>
+                  <h3>Recent Applications</h3>
+                  <p>Your latest application activity</p>
+                </div>
+
+                <button class="text-button"
+                        data-navigate="applications"
+                        type="button">
+                  View All →
+                </button>
+
+              </div>
+
+              <div class="table-container">
+
+                <table class="data-table">
+
+                  <thead>
+                    <tr>
+                      <th>Company</th>
+                      <th>Position</th>
+                      <th>Status</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="recent-applications-body">
+
+                    <tr>
+                      <td colspan="4"
+                          class="empty-table">
+                        No applications yet.
+                        Add your first application
+                        to get started.
+                      </td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            </section>
+
+            <section class="panel">
+
+              <div class="panel-header">
+                <div>
+                  <h3>Upcoming Interviews</h3>
+                  <p>Your scheduled interviews</p>
+                </div>
+              </div>
+
+              <div id="overview-interviews"
+                   class="overview-interview-list">
+
+                <div class="empty-state">
+                  <span class="empty-icon">▣</span>
+                  <h4>No interviews scheduled</h4>
+                  <p>
+                    Upcoming interviews will
+                    appear here.
+                  </p>
+                </div>
+
+              </div>
+
+              <button class="text-button"
+                      data-navigate="interviews"
+                      type="button">
+                Manage Interviews →
+              </button>
+
+            </section>
+
+          </div>
+
+          <!-- STATUS SUMMARY -->
+
+          <section class="panel overview-status">
+
+            <div class="panel-header">
+              <div>
+                <h3>Application Progress</h3>
+                <p>
+                  A breakdown of your current
+                  application statuses
+                </p>
+              </div>
+            </div>
+
+            <div id="overview-status-bars"
+                 class="status-bars">
+            </div>
+
+          </section>
+
+        </section>
+
+        <!-- APPLICATIONS PAGE -->
+
+        <section class="page"
+                 id="page-applications"
+                 hidden>
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">APPLICATION MANAGER</p>
+              <h2>My Applications</h2>
+
+              <p>
+                Organize and update your
+                internship and job applications.
+              </p>
+            </div>
+
+            <button class="btn btn-primary"
+                    id="applications-add-btn"
+                    type="button">
+              + Add Application
+            </button>
+
+          </div>
+
+          <div class="panel">
+
+            <div class="toolbar">
+
+              <div class="search-wrapper">
+
+                <label for="application-search"
+                       class="visually-hidden">
+                  Search applications
+                </label>
+
+                <input
+                  type="search"
+                  id="application-search"
+                  placeholder="Search company or position..."
+                >
+
+              </div>
+
+              <div class="filter-wrapper">
+
+                <label for="status-filter">
+                  Status
+                </label>
+
+                <select id="status-filter">
+                  <option value="All">All Statuses</option>
+                  <option value="Saved">Saved</option>
+                  <option value="Applied">Applied</option>
+                  <option value="Interviewing">Interviewing</option>
+                  <option value="Offer">Offer</option>
+                  <option value="Rejected">Rejected</option>
+                </select>
+
+              </div>
+
+              <div class="filter-wrapper">
+
+                <label for="sort-applications">
+                  Sort
+                </label>
+
+                <select id="sort-applications">
+                  <option value="newest">Newest First</option>
+                  <option value="oldest">Oldest First</option>
+                  <option value="company">Company A to Z</option>
+                </select>
+
+              </div>
+
+            </div>
+
+            <div class="table-container">
+
+              <table class="data-table applications-table">
+
+                <thead>
+                  <tr>
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Applied</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="applications-table-body">
+
+                  <tr>
+                    <td colspan="6"
+                        class="empty-table">
+                      No applications found.
+                    </td>
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+            <div class="table-footer">
+
+              <span id="application-count">
+                Showing 0 applications
+              </span>
+
+              <button class="text-button"
+                      id="export-applications"
+                      type="button">
+                Export Data
+              </button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- APPLICATION BOARD -->
+
+        <section class="page"
+                 id="page-board"
+                 hidden>
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">APPLICATION WORKFLOW</p>
+              <h2>Application Board</h2>
+
+              <p>
+                See where each application
+                stands in your job search.
+              </p>
+            </div>
+
+            <button class="btn btn-primary"
+                    id="board-add-btn"
+                    type="button">
+              + Add Application
+            </button>
+
+          </div>
+
+          <div class="kanban-board"
+               id="kanban-board">
+
+            <section class="kanban-column"
+                     data-status="Saved">
+
+              <div class="kanban-header">
+                <h3>Saved</h3>
+                <span id="board-count-saved">0</span>
+              </div>
+
+              <div class="kanban-list"
+                   id="board-saved">
+              </div>
+
+            </section>
+
+            <section class="kanban-column"
+                     data-status="Applied">
+
+              <div class="kanban-header">
+                <h3>Applied</h3>
+                <span id="board-count-applied">0</span>
+              </div>
+
+              <div class="kanban-list"
+                   id="board-applied">
+              </div>
+
+            </section>
+
+            <section class="kanban-column"
+                     data-status="Interviewing">
+
+              <div class="kanban-header">
+                <h3>Interviewing</h3>
+                <span id="board-count-interviewing">0</span>
+              </div>
+
+              <div class="kanban-list"
+                   id="board-interviewing">
+              </div>
+
+            </section>
+
+            <section class="kanban-column"
+                     data-status="Offer">
+
+              <div class="kanban-header">
+                <h3>Offer</h3>
+                <span id="board-count-offer">0</span>
+              </div>
+
+              <div class="kanban-list"
+                   id="board-offer">
+              </div>
+
+            </section>
+
+            <section class="kanban-column"
+                     data-status="Rejected">
+
+              <div class="kanban-header">
+                <h3>Rejected</h3>
+                <span id="board-count-rejected">0</span>
+              </div>
+
+              <div class="kanban-list"
+                   id="board-rejected">
+              </div>
+
+            </section>
+
+          </div>
+
+        </section>
+
+        <!-- INTERVIEWS PAGE -->
+
+        <section class="page"
+                 id="page-interviews"
+                 hidden>
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">INTERVIEW PLANNER</p>
+              <h2>Interviews</h2>
+
+              <p>
+                Keep track of interview dates,
+                companies, and notes.
+              </p>
+            </div>
+
+            <button class="btn btn-primary"
+                    id="add-interview-btn"
+                    type="button">
+              + Schedule Interview
+            </button>
+
+          </div>
+
+          <div class="panel">
+
+            <div class="panel-header">
+              <div>
+                <h3>Scheduled Interviews</h3>
+                <p>
+                  Your upcoming and previous interviews
+                </p>
+              </div>
+            </div>
+
+            <div id="interview-list"
+                 class="interview-list">
+
+              <div class="empty-state">
+                <span class="empty-icon">▣</span>
+                <h4>No interviews yet</h4>
+                <p>
+                  Schedule an interview to
+                  start organizing your calendar.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ANALYTICS PAGE -->
+
+        <section class="page"
+                 id="page-analytics"
+                 hidden>
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">APPLICATION INSIGHTS</p>
+              <h2>Analytics</h2>
+
+              <p>
+                Review your application activity
+                and progress over time.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="stats-grid analytics-stats">
+
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Total Applications</span>
+              </div>
+
+              <strong id="analytics-total">0</strong>
+              <p>Applications tracked</p>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Interview Rate</span>
+              </div>
+
+              <strong id="analytics-interview-rate">
+                0%
+              </strong>
+
+              <p>Reached interview stage</p>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Offer Rate</span>
+              </div>
+
+              <strong id="analytics-offer-rate">
+                0%
+              </strong>
+
+              <p>Applications resulting in offers</p>
+            </article>
+
+          </div>
+
+          <div class="analytics-grid">
+
+            <section class="panel">
+
+              <div class="panel-header">
+                <div>
+                  <h3>Application Statuses</h3>
+                  <p>Distribution by current status</p>
+                </div>
+              </div>
+
+              <div id="analytics-status-chart"
+                   class="chart-container">
+              </div>
+
+            </section>
+
+            <section class="panel">
+
+              <div class="panel-header">
+                <div>
+                  <h3>Application Activity</h3>
+                  <p>Applications over time</p>
+                </div>
+              </div>
+
+              <div id="analytics-activity-chart"
+                   class="chart-container">
+              </div>
+
+            </section>
+
+          </div>
+
+        </section>
+
+        <!-- RESUMES PAGE -->
+
+        <section class="page"
+                 id="page-resumes"
+                 hidden>
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">DOCUMENT ORGANIZER</p>
+              <h2>My Resumes</h2>
+
+              <p>
+                Keep your resume versions organized
+                for different applications.
+              </p>
+            </div>
+
+            <button class="btn btn-primary"
+                    id="add-resume-btn"
+                    type="button">
+              + Add Resume
+            </button>
+
+          </div>
+
+          <div class="panel">
+
+            <div class="panel-header">
+              <div>
+                <h3>Resume Library</h3>
+                <p>Your saved resume information</p>
+              </div>
+            </div>
+
+            <div id="resume-list"
+                 class="resume-list">
+
+              <div class="empty-state">
+                <span class="empty-icon">▧</span>
+                <h4>No resumes added</h4>
+                <p>
+                  Organize your resumes
+                  by name and purpose.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- APPLICATION MODAL -->
+
+  <div class="modal-overlay"
+       id="application-modal"
+       hidden>
+
+    <div class="modal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="application-modal-title">
+
+      <div class="modal-header">
+
+        <div>
+          <h2 id="application-modal-title">
+            Add Application
+          </h2>
+          <p>Enter your application details.</p>
+        </div>
+
+        <button class="modal-close"
+                id="close-application-modal"
+                type="button"
+                aria-label="Close application form">
+          ×
+        </button>
+
+      </div>
+
+      <form id="application-form">
+
+        <input type="hidden"
+               id="application-id">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="company">
+              Company *
+            </label>
+
+            <input type="text"
+                   id="company"
+                   required
+                   maxlength="100"
+                   placeholder="Company name">
+          </div>
+
+          <div class="form-group">
+            <label for="position">
+              Position *
+            </label>
+
+            <input type="text"
+                   id="position"
+                   required
+                   maxlength="120"
+                   placeholder="Job title">
+          </div>
+
+          <div class="form-group">
+            <label for="location">
+              Location
+            </label>
+
+            <input type="text"
+                   id="location"
+                   maxlength="120"
+                   placeholder="City or remote">
+          </div>
+
+          <div class="form-group">
+            <label for="status">
+              Status
+            </label>
+
+            <select id="status">
+              <option value="Saved">Saved</option>
+              <option value="Applied">Applied</option>
+              <option value="Interviewing">Interviewing</option>
+              <option value="Offer">Offer</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="application-date">
+              Application Date
+            </label>
+
+            <input type="date"
+                   id="application-date">
+          </div>
+
+          <div class="form-group">
+            <label for="deadline">
+              Deadline
+            </label>
+
+            <input type="date"
+                   id="deadline">
+          </div>
+
+          <div class="form-group full-width">
+            <label for="job-url">
+              Job Posting URL
+            </label>
+
+            <input type="url"
+                   id="job-url"
+                   placeholder="https://example.com/job">
+          </div>
+
+          <div class="form-group full-width">
+            <label for="application-notes">
+              Notes
+            </label>
+
+            <textarea id="application-notes"
+                      rows="4"
+                      maxlength="2000"
+                      placeholder="Anything you want to remember..."></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+          <button class="btn btn-secondary"
+                  id="cancel-application"
+                  type="button">
+            Cancel
+          </button>
+
+          <button class="btn btn-primary"
+                  type="submit">
+            Save Application
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- INTERVIEW MODAL -->
+
+  <div class="modal-overlay"
+       id="interview-modal"
+       hidden>
+
+    <div class="modal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="interview-modal-title">
+
+      <div class="modal-header">
+
+        <div>
+          <h2 id="interview-modal-title">
+            Schedule Interview
+          </h2>
+          <p>Add your interview details.</p>
+        </div>
+
+        <button class="modal-close"
+                id="close-interview-modal"
+                type="button"
+                aria-label="Close interview form">
+          ×
+        </button>
+
+      </div>
+
+      <form id="interview-form">
+
+        <input type="hidden" id="interview-id">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="interview-company">
+              Company *
+            </label>
+
+            <input type="text"
+                   id="interview-company"
+                   required
+                   maxlength="100">
+          </div>
+
+          <div class="form-group">
+            <label for="interview-position">
+              Position
+            </label>
+
+            <input type="text"
+                   id="interview-position"
+                   maxlength="120">
+          </div>
+
+          <div class="form-group">
+            <label for="interview-date">
+              Date *
+            </label>
+
+            <input type="date"
+                   id="interview-date"
+                   required>
+          </div>
+
+          <div class="form-group">
+            <label for="interview-time">
+              Time
+            </label>
+
+            <input type="time"
+                   id="interview-time">
+          </div>
+
+          <div class="form-group">
+            <label for="interview-type">
+              Interview Type
+            </label>
+
+            <select id="interview-type">
+              <option value="Phone">Phone</option>
+              <option value="Video">Video</option>
+              <option value="In Person">In Person</option>
+              <option value="Technical">Technical</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="interview-status">
+              Status
+            </label>
+
+            <select id="interview-status">
+              <option value="Scheduled">Scheduled</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="interview-notes">
+              Notes
+            </label>
+
+            <textarea id="interview-notes"
+                      rows="4"
+                      maxlength="2000"
+                      placeholder="Interview details or preparation notes"></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+          <button class="btn btn-secondary"
+                  id="cancel-interview"
+                  type="button">
+            Cancel
+          </button>
+
+          <button class="btn btn-primary"
+                  type="submit">
+            Save Interview
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- RESUME MODAL -->
+
+  <div class="modal-overlay"
+       id="resume-modal"
+       hidden>
+
+    <div class="modal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="resume-modal-title">
+
+      <div class="modal-header">
+
+        <div>
+          <h2 id="resume-modal-title">
+            Add Resume
+          </h2>
+
+          <p>
+            Save information about a resume version.
+          </p>
+        </div>
+
+        <button class="modal-close"
+                id="close-resume-modal"
+                type="button"
+                aria-label="Close resume form">
+          ×
+        </button>
+
+      </div>
+
+      <form id="resume-form">
+
+        <input type="hidden" id="resume-id">
+
+        <div class="form-group">
+          <label for="resume-name">
+            Resume Name *
+          </label>
+
+          <input type="text"
+                 id="resume-name"
+                 required
+                 maxlength="100"
+                 placeholder="Software Engineering Resume">
+        </div>
+
+        <div class="form-group">
+          <label for="resume-purpose">
+            Purpose
+          </label>
+
+          <input type="text"
+                 id="resume-purpose"
+                 maxlength="120"
+                 placeholder="Internships, web development, etc.">
+        </div>
+
+        <div class="form-group">
+          <label for="resume-notes">
+            Notes
+          </label>
+
+          <textarea id="resume-notes"
+                    rows="4"
+                    maxlength="1000"
+                    placeholder="Notes about this resume version"></textarea>
+        </div>
+
+        <div class="modal-footer">
+
+          <button class="btn btn-secondary"
+                  id="cancel-resume"
+                  type="button">
+            Cancel
+          </button>
+
+          <button class="btn btn-primary"
+                  type="submit">
+            Save Resume
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- NOTIFICATION -->
+
+  <div id="toast"
+       class="toast"
+       role="status"
+       aria-live="polite"
+       hidden>
+  </div>
+
+  <!-- MOBILE SIDEBAR BACKDROP -->
+
+  <div class="sidebar-backdrop"
+       id="sidebar-backdrop"
+       hidden>
+  </div>
+
+</body>
+</html>
